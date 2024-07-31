@@ -1,0 +1,14 @@
+version: '3.8'
+
+name: test-njs
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./jwt_auth.lua:/usr/local/openresty/nginx/lua/jwt_auth.lua
+    ports:
+      - "81:80"
